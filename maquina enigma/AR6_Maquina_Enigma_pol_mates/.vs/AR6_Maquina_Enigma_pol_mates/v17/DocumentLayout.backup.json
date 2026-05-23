@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F946BDD1-8523-4CD8-80EC-F9CE9B0AAAD1}|AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates.vcxproj|C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F946BDD1-8523-4CD8-80EC-F9CE9B0AAAD1}|AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates.vcxproj|solutionrelative:AR6_Maquina_Enigma_pol_mates\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\main.cpp",
+              "RelativeDocumentMoniker": "AR6_Maquina_Enigma_pol_mates\\main.cpp",
+              "ToolTip": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\main.cpp",
+              "RelativeToolTip": "AR6_Maquina_Enigma_pol_mates\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-05-23T16:53:45.955Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
