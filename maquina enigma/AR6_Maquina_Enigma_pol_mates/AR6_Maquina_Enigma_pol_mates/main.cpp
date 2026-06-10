@@ -5,8 +5,9 @@
 using namespace std;
 
 int main() {
-    Rotor r1, r2, r3;
+    Rotor r1, r2, r3; // Creamos 3 rotores
 
+    // Cargamos los rotores desde archivos
     if (!loadRotor("Rotor1.txt", r1) ||
         !loadRotor("Rotor2.txt", r2) ||
         !loadRotor("Rotor3.txt", r3)) {
@@ -16,6 +17,7 @@ int main() {
 
     int op;
 
+    // Menú que se repite hasta salir
     while (true) {
         cout << "\n===== ENIGMA =====\n";
         cout << "1. Cifrar mensaje\n";
@@ -25,11 +27,12 @@ int main() {
         cout << "Opcion: ";
         cin >> op;
 
-        if (op == 4) {
+        if (op == 4) { // Si elige salir
             cout << "[OK] Saliendo...\n";
             break;
         }
 
+        // Opción para editar un rotor
         if (op == 3) {
             int id;
             cout << "Que rotor (1-3): ";
@@ -40,34 +43,38 @@ int main() {
             else if (id == 3) editRotor(r3, "Rotor3.txt");
             else cout << "[ERROR] Rotor invalido";
 
-            continue;
+            continue; // Vuelve al menú
         }
 
         string window;
         cout << "Ventana (ABC): ";
         cin >> window;
 
+        // Comprobamos que tenga 3 letras
         if (window.size() != 3) {
             cout << "[ERROR] Debe ser 3 letras\n";
             continue;
         }
 
+        // Ponemos la posición inicial de los rotores
         r1.pos = window[0] - 'A';
         r2.pos = window[1] - 'A';
         r3.pos = window[2] - 'A';
 
-        cin.ignore();
+        cin.ignore(); // Limpiar el buffer
 
         string msg;
         cout << "Mensaje: ";
         getline(cin, msg);
 
-        msg = clean(msg);
+        msg = clean(msg); // Limpiamos el mensaje
 
+        // Volvemos a poner la posición inicial
         r1.pos = window[0] - 'A';
         r2.pos = window[1] - 'A';
         r3.pos = window[2] - 'A';
 
+        // Ejecutamos la opción elegida
         if (op == 1)
             cout << encryptText(msg, r1, r2, r3) << endl;
         else if (op == 2)
