@@ -33,6 +33,19 @@
           "SelectedChildIndex": 6,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "rotor.h",
+              "DocumentMoniker": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\rotor.h",
+              "RelativeDocumentMoniker": "AR6_Maquina_Enigma_pol_mates\\rotor.h",
+              "ToolTip": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\rotor.h",
+              "RelativeToolTip": "AR6_Maquina_Enigma_pol_mates\\rotor.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-05-23T16:57:41.858Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
@@ -42,26 +55,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "rotor.h",
-              "DocumentMoniker": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\rotor.h",
-              "RelativeDocumentMoniker": "AR6_Maquina_Enigma_pol_mates\\rotor.h",
-              "ToolTip": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\rotor.h",
-              "RelativeToolTip": "AR6_Maquina_Enigma_pol_mates\\rotor.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-23T16:57:41.858Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "rotor.cpp",
               "DocumentMoniker": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\rotor.cpp",
               "RelativeDocumentMoniker": "AR6_Maquina_Enigma_pol_mates\\rotor.cpp",
               "ToolTip": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\rotor.cpp",
               "RelativeToolTip": "AR6_Maquina_Enigma_pol_mates\\rotor.cpp",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAqwJ4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-05-23T16:56:40.566Z",
               "EditorCaption": ""
@@ -74,7 +74,7 @@
               "RelativeDocumentMoniker": "AR6_Maquina_Enigma_pol_mates\\enigma.h",
               "ToolTip": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\enigma.h",
               "RelativeToolTip": "AR6_Maquina_Enigma_pol_mates\\enigma.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2026-05-23T16:57:28.133Z",
               "EditorCaption": ""
@@ -87,7 +87,7 @@
               "RelativeDocumentMoniker": "AR6_Maquina_Enigma_pol_mates\\enigma.cpp",
               "ToolTip": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\enigma.cpp",
               "RelativeToolTip": "AR6_Maquina_Enigma_pol_mates\\enigma.cpp",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAqwEUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAqwEQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-05-23T16:57:07.871Z",
               "EditorCaption": ""
@@ -100,7 +100,7 @@
               "RelativeDocumentMoniker": "AR6_Maquina_Enigma_pol_mates\\main.cpp",
               "ToolTip": "C:\\Users\\polma\\OneDrive\\Documentos\\GitHub\\AR6_Maquina_Engima_pol_mates\\maquina enigma\\AR6_Maquina_Enigma_pol_mates\\AR6_Maquina_Enigma_pol_mates\\main.cpp",
               "RelativeToolTip": "AR6_Maquina_Enigma_pol_mates\\main.cpp",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAqwI0AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAJUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-05-23T16:53:45.955Z",
               "EditorCaption": ""

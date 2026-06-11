@@ -1,22 +1,30 @@
 #pragma once
 #include <string>
 
+// Estructura de un rotor
 struct Rotor {
-    std::string wiring;
-    char notch = 'Z';
-    int pos = 0;
+    std::string cableado;   // Permutación de 26 letras
+    char notch = 'Z';       // Letra donde hace avanzar el siguiente rotor
+    int posicion = 0;       // Posición actual del rotor
 
-    void step();
-    bool atNotch() const;
-    int forward(int x) const;
-    int backward(int x) const;
+    void avanzar();
+    bool estaEnNotch() const;
+    int adelante(int x) const;
+    int atras(int x) const;
 };
 
-bool isValidWiring(const std::string& wiring);
-bool loadRotor(const std::string& file, Rotor& r);
-bool saveRotor(const std::string& file, const Rotor& r);
+// Comprueba si un cableado es válido
+bool cableadoValido(const std::string& cableado);
 
-std::string clean(const std::string& s);
-std::string groupFive(const std::string& s);
+// Carga y guarda un rotor en archivo
+bool cargarRotor(const std::string& archivo, Rotor& r);
+bool guardarRotor(const std::string& archivo, const Rotor& r);
 
-void editRotor(Rotor& r, const std::string& file);
+// Limpia el texto: mayúsculas y solo A-Z
+std::string limpiarTexto(const std::string& texto);
+
+// Agrupa en bloques de 5 letras
+std::string agruparDeCinco(const std::string& texto);
+
+// Permite editar un rotor desde teclado
+void editarRotor(Rotor& r, const std::string& archivo);

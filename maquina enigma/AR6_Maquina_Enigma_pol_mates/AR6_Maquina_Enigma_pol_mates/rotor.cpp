@@ -5,73 +5,77 @@
 
 using namespace std;
 
-// ================= ROTOR CORE =================
-
-void Rotor::step() {
-    pos = (pos + 1) % 26;
+// Avanza una posición
+void Rotor::avanzar() {
+    posicion = (posicion + 1) % 26;
 }
 
-bool Rotor::atNotch() const {
-    return ('A' + pos) == notch;
+// Comprueba si el rotor está en su notch
+bool Rotor::estaEnNotch() const {
+    return ('A' + posicion) == notch;
 }
 
-int Rotor::forward(int x) const {
-    int shiftedIn = (x + pos) % 26;
-    int wiredOut = wiring[shiftedIn] - 'A';
-    return (wiredOut - pos + 26) % 26;
+// Paso hacia delante por el rotor
+int Rotor::adelante(int x) const {
+    int entradaAjustada = (x + posicion) % 26;
+    int salidaCableada = cableado[entradaAjustada] - 'A';
+    return (salidaCableada - posicion + 26) % 26;
 }
 
-int Rotor::backward(int x) const {
-    int shiftedIn = (x + pos) % 26;
+// Paso hacia atrás por el rotor
+int Rotor::atras(int x) const {
+    int entradaAjustada = (x + posicion) % 26;
 
     for (int i = 0; i < 26; i++) {
-        if (wiring[i] - 'A' == shiftedIn) {
-            return (i - pos + 26) % 26;
+        if (cableado[i] - 'A' == entradaAjustada) {
+            return (i - posicion + 26) % 26;
         }
     }
 
     return x;
 }
 
-// ================= VALIDATION =================
+// Comprueba que el cableado tenga 26 letras únicas A-Z
+bool cableadoValido(const string& cableado) {
+    if (cableado.size() != 26) return false;
 
-bool isValidWiring(const string& wiring) {
-    if (wiring.size() != 26) return false;
+    bool usadas[26] = { false };
 
-    bool used[26] = { false };
-
-    for (char c : wiring) {
+    for (char c : cableado) {
         if (c < 'A' || c > 'Z') return false;
-        int idx = c - 'A';
-        if (used[idx]) return false;
-        used[idx] = true;
+
+        int indice = c - 'A';
+        if (usadas[indice]) return false;
+
+        usadas[indice] = true;
     }
 
     return true;
 }
 
-// ================= FILES =================
-
-bool loadRotor(const string& file, Rotor& r) {
-    ifstream f(file);
+// Carga rotor desde archivo
+bool cargarRotor(const string& archivo, Rotor& r) {
+    ifstream f(archivo);
     if (!f) return false;
 
-    string wiringLine;
-    string notchLine;
+    string lineaCableado;
+    string lineaNotch;
 
-    if (!getline(f, wiringLine)) return false;
+    if (!getline(f, lineaCableado)) return false;
 
-    for (char& c : wiringLine) c = toupper(static_cast<unsigned char>(c));
+    for (char& c : lineaCableado) {
+        c = toupper(static_cast<unsigned char>(c));
+    }
 
-    if (!isValidWiring(wiringLine)) return false;
+    if (!cableadoValido(lineaCableado)) return false;
 
-    r.wiring = wiringLine;
-    r.pos = 0;
+    r.cableado = lineaCableado;
+    r.posicion = 0;
     r.notch = 'Z';
 
-    if (getline(f, notchLine)) {
-        if (!notchLine.empty()) {
-            char c = toupper(static_cast<unsigned char>(notchLine[0]));
+    if (getline(f, lineaNotch)) {
+        if (!lineaNotch.empty()) {
+            char c = toupper(static_cast<unsigned char>(lineaNotch[0]));
             if (c < 'A' || c > 'Z') return false;
             r.notch = c;
         }
@@ -80,80 +84,86 @@ bool loadRotor(const string& file, Rotor& r) {
     return true;
 }
 
-bool saveRotor(const string& file, const Rotor& r) {
-    ofstream f(file);
+// Guarda rotor en archivo
+bool guardarRotor(const string& archivo, const Rotor& r) {
+    ofstream f(archivo);
     if (!f) return false;
 
-    f << r.wiring << "\n";
+    f << r.cableado << "\n";
     f << r.notch << "\n";
 
     return f.good();
 }
 
-// ================= TEXT UTILS =================
+// Limpia el texto: pasa a mayúsculas y elimina lo que no sea A-Z
+string limpiarTexto(const string& texto) {
+    string resultado;
 
-string clean(const string& s) {
-    string r;
-
-    for (char c : s) {
-        unsigned char uc = static_cast<unsigned char>(c);
-        c = toupper(uc);
+    for (char c : texto) {
+        c = toupper(static_cast<unsigned char>(c));
 
         if (c >= 'A' && c <= 'Z') {
-            r += c;
+            resultado += c;
         }
     }
 
-    return r;
+    return resultado;
 }
 
-string groupFive(const string& s) {
-    string out;
+// Separa el texto en grupos de 5 letras
+string agruparDeCinco(const string& texto) {
+    string salida;
 
-    for (size_t i = 0; i < s.size(); i++) {
-        if (i > 0 && i % 5 == 0) out += ' ';
-        out += s[i];
+    for (size_t i = 0; i < texto.size(); i++) {
+        if (i > 0 && i % 5 == 0) {
+            salida += ' ';
+        }
+
+        salida += texto[i];
     }
 
-    return out;
+    return salida;
 }
 
-// ================= EDIT ROTOR =================
-
-void editRotor(Rotor& r, const string& file) {
-    string newWiring;
-    string notchInput;
+// Edita rotor desde teclado
+void editarRotor(Rotor& r, const string& archivo) {
+    string nuevoCableado;
+    string entradaNotch;
 
     cout << "Nueva permutacion (26 letras A-Z): ";
-    cin >> newWiring;
+    cin >> nuevoCableado;
 
-    for (char& c : newWiring) c = toupper(static_cast<unsigned char>(c));
+    for (char& c : nuevoCableado) {
+        c = toupper(static_cast<unsigned char>(c));
+    }
 
-    if (!isValidWiring(newWiring)) {
-        cout << "[ERROR] Permutacion invalida: deben ser 26 letras unicas A-Z\n";
+    if (!cableadoValido(nuevoCableado)) {
+        cout << "[ERROR] El cableado no es valido\n";
         return;
     }
 
-    cout << "Notch (1 letra A-Z, vacio = Z): ";
-    cin >> notchInput;
+    cout << "Notch (una letra A-Z, si no sabes pon Z): ";
+    cin >> entradaNotch;
 
-    char newNotch = 'Z';
-    if (!notchInput.empty()) {
-        newNotch = toupper(static_cast<unsigned char>(notchInput[0]));
-        if (newNotch < 'A' || newNotch > 'Z') {
-            cout << "[ERROR] Notch invalido\n";
+    char nuevoNotch = 'Z';
+
+    if (!entradaNotch.empty()) {
+        nuevoNotch = toupper(static_cast<unsigned char>(entradaNotch[0]));
+
+        if (nuevoNotch < 'A' || nuevoNotch > 'Z') {
+            cout << "[ERROR] El notch no es valido\n";
             return;
         }
     }
 
-    r.wiring = newWiring;
-    r.notch = newNotch;
-    r.pos = 0;
+    r.cableado = nuevoCableado;
+    r.notch = nuevoNotch;
+    r.posicion = 0;
 
-    if (!saveRotor(file, r)) {
-        cout << "[ERROR] No se pudo guardar " << file << "\n";
+    if (!guardarRotor(archivo, r)) {
+        cout << "[ERROR] No se pudo guardar el rotor en el archivo\n";
         return;
     }
 
-    cout << "[OK] Rotor actualizado y guardado en " << file << "\n";
+    cout << "[OK] Rotor actualizado correctamente\n";
 }

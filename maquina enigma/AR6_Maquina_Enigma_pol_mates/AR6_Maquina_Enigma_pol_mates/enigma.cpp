@@ -1,70 +1,69 @@
 ﻿#include "enigma.h"
 
-// ===== STEPPING =====
+// Avanza los rotores antes de procesar una letra
+void avanzarRotores(Rotor& r1, Rotor& r2, Rotor& r3) {
+    bool moverR2 = r1.estaEnNotch();
+    bool moverR3 = r2.estaEnNotch();
 
-void stepRotors(Rotor& r1, Rotor& r2, Rotor& r3) {
-    bool stepR2 = r1.atNotch();
-    bool stepR3 = r2.atNotch();
+    r1.avanzar();
 
-    r1.step();
-
-    if (stepR2) {
-        r2.step();
+    if (moverR2) {
+        r2.avanzar();
     }
 
-    if (stepR3) {
-        r3.step();
+    if (moverR3) {
+        r3.avanzar();
     }
 }
 
-// ===== ROTOR CHAR =====
-
-char encryptChar(char c, Rotor& r1, Rotor& r2, Rotor& r3) {
-    stepRotors(r1, r2, r3);
+// Cifra una letra
+char cifrarLetra(char c, Rotor& r1, Rotor& r2, Rotor& r3) {
+    avanzarRotores(r1, r2, r3);
 
     int x = c - 'A';
 
-    x = r1.forward(x);
-    x = r2.forward(x);
-    x = r3.forward(x);
+    x = r1.adelante(x);
+    x = r2.adelante(x);
+    x = r3.adelante(x);
 
     return char(x + 'A');
 }
 
-char decryptChar(char c, Rotor& r1, Rotor& r2, Rotor& r3) {
-    stepRotors(r1, r2, r3);
+// Descifra una letra
+char descifrarLetra(char c, Rotor& r1, Rotor& r2, Rotor& r3) {
+    avanzarRotores(r1, r2, r3);
 
     int x = c - 'A';
 
-    x = r3.backward(x);
-    x = r2.backward(x);
-    x = r1.backward(x);
+    x = r3.atras(x);
+    x = r2.atras(x);
+    x = r1.atras(x);
 
     return char(x + 'A');
 }
 
-// ===== TEXT =====
+// Cifra un texto completo
+std::string cifrarTexto(const std::string& texto, Rotor& r1, Rotor& r2, Rotor& r3) {
+    std::string salida;
 
-std::string encryptText(const std::string& msg, Rotor& r1, Rotor& r2, Rotor& r3) {
-    std::string out;
-
-    for (char c : msg) {
+    for (char c : texto) {
         if (c >= 'A' && c <= 'Z') {
-            out += encryptChar(c, r1, r2, r3);
+            salida += cifrarLetra(c, r1, r2, r3);
         }
     }
 
-    return out;
+    return salida;
 }
 
-std::string decryptText(const std::string& msg, Rotor& r1, Rotor& r2, Rotor& r3) {
-    std::string out;
+// Descifra un texto completo
+std::string descifrarTexto(const std::string& texto, Rotor& r1, Rotor& r2, Rotor& r3) {
+    std::string salida;
 
-    for (char c : msg) {
+    for (char c : texto) {
         if (c >= 'A' && c <= 'Z') {
-            out += decryptChar(c, r1, r2, r3);
+            salida += descifrarLetra(c, r1, r2, r3);
         }
     }
 
-    return out;
+    return salida;
 }
